@@ -1,5 +1,5 @@
 {
-    "name": "muhamed-didovic/shortener-frank",
+    "name": "muhamed-didovic/shortener",
     "type": "library",
     "description": "Shortener for Laravel with Vue.js SPA app",
     "keywords": [
@@ -8,7 +8,7 @@
         "vue",
         "laravel"
     ],
-    "homepage": "https://github.com/muhamed-didovic/shortener-frank",
+    "homepage": "https://github.com/muhamed-didovic/shortener",
     "license": "MIT",
     "authors": [
         {

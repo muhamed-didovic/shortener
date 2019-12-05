@@ -19,7 +19,7 @@ return [
     /*
      * Url that should be used with the shortened string
      */
-    'url'    => env('APP_URL', 'http://frank.test'),
+    'url'    => env('APP_URL', 'http://localhost'),
 
     /*
      * Routes used in the package

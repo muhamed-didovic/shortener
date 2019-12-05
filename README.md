@@ -1,4 +1,4 @@
-# shortener-frank
+# shortener
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -12,7 +12,7 @@ This Laravel package allows you to shorten a URL, it comes also with frontend pa
 You can publish all files like: views, config, migrations for frontend you can publish js and css 
 file and adjust them accordigly.
 
-<img src="https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/usage.gif">
+<img src="https://raw.githubusercontent.com/muhamed-didovic/shortener/master/docs/usage.gif">
 
 **Basic Docs**
 
@@ -36,7 +36,7 @@ To get the latest version, simply require the project using [Composer](https://g
 Via Composer
 
 ``` bash
-$ composer require muhamed-didovic/shortener-frank
+$ composer require muhamed-didovic/shortener
 ```
 
 Once installed, if you are NOT using automatic package discovery (Laravel 5.4 and below), then you need to register the `MuhamedDidovic\Shortener\ShortenerServiceProvider` service provider in your `config/app.php` like this:
@@ -117,7 +117,7 @@ return [
     /*
      * Url that should be used with the shortened string
      */
-    'url'    => env('APP_URL', 'http://frank.test'),
+    'url'    => env('APP_URL', 'http://localhost'),
 
     /*
      * Routes used in the package
@@ -163,7 +163,7 @@ The first command above is for view file and it will be placed in `resources/vie
 
 It should be like this:
 
-<img src="https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/view.png" width="200">
+<img src="https://raw.githubusercontent.com/muhamed-didovic/shortener/master/docs/view.png" width="200">
 
 Second command is publishing js and css into `resources` and `public` folder.
 
@@ -171,11 +171,11 @@ This is needed when we make changes to js or css files in `resources` folder, th
 
 js and css files in `resources` folder should look like this:
 
-<img src="https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/resources.png" width="200">
+<img src="https://raw.githubusercontent.com/muhamed-didovic/shortener/master/docs/resources.png" width="200">
  
 And the bundled files that are generated from `resources` folder will be placed in `public` folder:
 
-<img src="https://raw.githubusercontent.com/muhamed-didovic/shortener-frank/master/docs/public.png" width="200">
+<img src="https://raw.githubusercontent.com/muhamed-didovic/shortener/master/docs/public.png" width="200">
 
 ### 2nd step
 
@@ -274,19 +274,19 @@ If you discover any security related issues, please email muhamed.didovic@gmail.
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/muhamed-didovic/shortener-frank.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/muhamed-didovic/shortener.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/muhamed-didovic/shortener-frank/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/muhamed-didovic/shortener-frank.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/muhamed-didovic/shortener-frank.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/muhamed-didovic/shortener-frank.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/muhamed-didovic/shortener/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/muhamed-didovic/shortener.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/muhamed-didovic/shortener.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/muhamed-didovic/shortener.svg?style=flat-square
 [ico-styleci]: https://github.styleci.io/repos/214193290/shield?branch=master
 
-[link-packagist]: https://packagist.org/packages/muhamed-didovic/shortener-frank
-[link-travis]: https://travis-ci.org/muhamed-didovic/shortener-frank
-[link-scrutinizer]: https://scrutinizer-ci.com/g/muhamed-didovic/shortener-frank/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/muhamed-didovic/shortener-frank
-[link-downloads]: https://packagist.org/packages/muhamed-didovic/shortener-frank
+[link-packagist]: https://packagist.org/packages/muhamed-didovic/shortener
+[link-travis]: https://travis-ci.org/muhamed-didovic/shortener
+[link-scrutinizer]: https://scrutinizer-ci.com/g/muhamed-didovic/shortener/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/muhamed-didovic/shortener
+[link-downloads]: https://packagist.org/packages/muhamed-didovic/shortener
 [link-author]: https://github.com/muhamed-didovic
 [link-contributors]: ../../contributors
 [link-styleci]: https://github.styleci.io/repos/214193290
