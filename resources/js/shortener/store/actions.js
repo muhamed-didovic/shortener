@@ -1,7 +1,7 @@
-export const setMessage = ({ commit }, message) => {
-    commit('setMessage', message)
+export const setMessage = ({commit}, message) => {
+  commit('setMessage', message)
 
-    setTimeout(() => {
-        commit('setMessage', null)
-    }, 3000)
+  setTimeout(() => {
+    commit('setMessage', null)
+  }, 3000)
 }

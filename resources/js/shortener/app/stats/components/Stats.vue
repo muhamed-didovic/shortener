@@ -33,7 +33,7 @@
 
 <script>
   import pluralize from 'pluralize'
-  import { mapActions, mapGetters } from 'vuex'
+  import {mapActions, mapGetters} from 'vuex'
 
   export default {
     computed: {
@@ -47,9 +47,9 @@
       }),
       pluralize: pluralize
     },
-    mounted () {
+    mounted() {
       this.getStats(this.$route.params.code).catch(() => {
-        this.$router.replace({ name: 'nope' })
+        this.$router.replace({name: 'nope'})
       })
     }
   }
