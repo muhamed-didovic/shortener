@@ -1,5 +1,4 @@
 import * as api from '../api'
-// import axios from "axios";
 
 export const shortenUrl = ({commit, dispatch, state}) => {
   commit('setShortened', null)

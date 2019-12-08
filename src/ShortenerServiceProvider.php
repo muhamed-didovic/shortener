@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MuhamedDidovic\Shortener;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use MuhamedDidovic\Shortener\Console\ShortenerCommand;
 use MuhamedDidovic\Shortener\Models\Link;
@@ -57,6 +58,11 @@ class ShortenerServiceProvider extends ServiceProvider
         $this->commands([
             ShortenerCommand::class,
         ]);
+
+        // Using Closure based composers.
+        View::composer('shortener::shortener', function ($view) {
+            $view->with('routes', config('shortener.routes'));
+        });
     }
 
     /**

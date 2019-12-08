@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shortener</title>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -16,7 +17,10 @@
     {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/shortener.css') }}" rel="stylesheet">
 
-    <title>Shortener</title>
+    <!-- Scripts -->
+    <script>
+        window.routes = @json($routes);
+    </script>
 </head>
 <body>
 
