@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /*
- * This file is part of Laravel Exceptions.
+ * This file is part of Shortener package.
  *
  * (c) Muhamed Didovic <muhamed.didovic@gmail.com>
  *
