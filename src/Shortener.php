@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MuhamedDidovic\Shortener;
 
 /**
- * Class Shortner.
+ * Class Shortener.
  */
 class Shortener
 {
