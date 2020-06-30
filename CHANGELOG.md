@@ -4,19 +4,17 @@ All notable changes to `shortener` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## NEXT - YYYY-MM-DD
-
+## [1.1.1] - 2019-10-23
 ### Added
-- Nothing
+- Final polishing
 
-### Deprecated
-- Nothing
+## [1.1.0] - 2019-10-23
+### Added
+- Added external services: StyleCI, Travis CI and Scrutinizer CI
 
 ### Fixed
-- Nothing
+- Updated and fixed documentation
 
-### Removed
-- Nothing
-
-### Security
-- Nothing
+## [1.0.0] - 2019-10-23
+### Added
+- initial release
