@@ -14,7 +14,7 @@ trait Response
     /**
      * @param Link  $link
      * @param array $merge
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
     protected function linkResponse(Link $link, $merge = [])
     {
