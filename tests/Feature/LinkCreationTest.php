@@ -46,7 +46,7 @@ class LinkCreationTest extends TestCase
         )
             ->assertJsonFragment([
                 'original_url'  => 'http://www.google.com',
-                'shortened_url' => config('shortener.url').'/1',
+                'shortened_url' => config('shortener.url') . '/1',
                 'code'          => '1',
             ])
             ->assertStatus(200);
@@ -79,7 +79,7 @@ class LinkCreationTest extends TestCase
         )
             ->assertJsonFragment([
                 'original_url'  => 'http://www.google.com',
-                'shortened_url' => config('shortener.url').'/1',
+                'shortened_url' => config('shortener.url') . '/1',
                 'code'          => '1',
             ])
             ->assertStatus(200);
@@ -133,8 +133,7 @@ class LinkCreationTest extends TestCase
         $reponse->assertJsonFragment(
             [
                 'original_url' => $link->original_url,
-            ]
-        )
+            ])
             ->assertStatus(200);
 
         $json = json_decode($reponse->getContent());
