@@ -56,7 +56,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "laravel/support:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "phpunit/phpunit:${PHPUNIT}" "codedungeon/phpunit-result-printer:${PRETTY}" --no-interaction --no-update
+          composer require "laravel/support:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "phpunit/phpunit:${matrix.phpunit}" "codedungeon/phpunit-result-printer:${matrix.pretty}" --no-interaction --no-update
           composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
 
       - name: Execute tests
