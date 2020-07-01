@@ -16,8 +16,8 @@ jobs:
         include:
           - laravel: 7.*
             testbench: 5.*
-            phpunit: 9.*
-            pretty: 0.26
+            phpunit: 8.*
+            pretty: 0.28
             carbon: 1.*
           - laravel: 6.*
             testbench: 4.*
