@@ -13,7 +13,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Added external services: StyleCI, Travis CI and Scrutinizer CI
 
 ### Fixed
-- Updated and fixed documentation
+- Updated documentation
 
 ## [1.0.0] - 2019-10-23
 ### Added

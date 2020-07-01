@@ -1,0 +1,64 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [7.2, 7.3, 7.4]
+#        laravel: [5.5.*, 5.6.*, 5.7.*, 5.8.*, 6.*, 7.*]
+        laravel: [5.8.*, 6.*, 7.*]
+        dependency-version: [prefer-lowest, prefer-stable]
+        include:
+          - laravel: 7.*
+            testbench: 5.*
+            phpunit: 9.*
+            pretty: 0.26
+            carbon: 1.*
+          - laravel: 6.*
+            testbench: 4.*
+            phpunit: 8.*
+            pretty: 0.26
+            carbon: 1.*
+          - laravel: 5.8.*
+            testbench: 3.8.*
+            phpunit: 7.*
+            pretty: 0.8
+#          - laravel: 5.7.*
+#            testbench: 3.8.*
+#          - laravel: 5.6.*
+#            testbench: 3.8.*
+#          - laravel: 5.5.*
+#            testbench: 3.5.*
+
+
+    name: P ${{ matrix.php }} - L ${{ matrix.laravel }} - ${{ matrix.dependency-version }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, intl, pdo, pdo_sqlite, sqlite
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.composer/cache/files
+          key: dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Install dependencies
+        run: |
+          composer require "laravel/support:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "phpunit/phpunit:${PHPUNIT}" "codedungeon/phpunit-result-printer:${PRETTY}" --no-interaction --no-update
+          composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+
+      - name: Execute tests
+        run: vendor/bin/phpunit
+
