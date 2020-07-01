@@ -69,17 +69,17 @@ matrix:
           env: LARAVEL='6.*' TESTBENCH='4.*' PHPUNIT='8.*' PRETTY='0.26' CARBON='2.*' COMPOSER_FLAGS='--prefer-stable'
 
         - php: 7.2
-          env: LARAVEL='7.*' TESTBENCH='5.*' PHPUNIT='9.*' PRETTY='0.26' CARBON='1.*' COMPOSER_FLAGS='--prefer-lowest'
+          env: LARAVEL='7.*' TESTBENCH='5.*' PHPUNIT='8.*' PRETTY='0.28' CARBON='1.*' COMPOSER_FLAGS='--prefer-lowest'
         - php: 7.2
-          env: LARAVEL='7.*' TESTBENCH='5.*' PHPUNIT='9.*' PRETTY='0.26' CARBON='2.*' COMPOSER_FLAGS='--prefer-stable'
+          env: LARAVEL='7.*' TESTBENCH='5.*' PHPUNIT='8.*' PRETTY='0.28' CARBON='2.*' COMPOSER_FLAGS='--prefer-stable'
         - php: 7.3
-          env: LARAVEL='7.*' TESTBENCH='5.*' PHPUNIT='9.*' PRETTY='0.26' CARBON='1.*' COMPOSER_FLAGS='--prefer-lowest'
+          env: LARAVEL='7.*' TESTBENCH='5.*' PHPUNIT='9.*' PRETTY='0.28' CARBON='1.*' COMPOSER_FLAGS='--prefer-lowest'
         - php: 7.3
-          env: LARAVEL='7.*' TESTBENCH='5.*' PHPUNIT='9.*' PRETTY='0.26' CARBON='2.*' COMPOSER_FLAGS='--prefer-stable'
+          env: LARAVEL='7.*' TESTBENCH='5.*' PHPUNIT='9.*' PRETTY='0.28' CARBON='2.*' COMPOSER_FLAGS='--prefer-stable'
         - php: 7.4
-          env: LARAVEL='7.*' TESTBENCH='5.*' PHPUNIT='9.*' PRETTY='0.26' CARBON='1.*' COMPOSER_FLAGS='--prefer-lowest'
+          env: LARAVEL='7.*' TESTBENCH='5.*' PHPUNIT='9.*' PRETTY='0.28' CARBON='1.*' COMPOSER_FLAGS='--prefer-lowest'
         - php: 7.4
-          env: LARAVEL='7.*' TESTBENCH='5.*' PHPUNIT='9.*' PRETTY='0.26' CARBON='2.*' COMPOSER_FLAGS='--prefer-stable'
+          env: LARAVEL='7.*' TESTBENCH='5.*' PHPUNIT='9.*' PRETTY='0.28' CARBON='2.*' COMPOSER_FLAGS='--prefer-stable'
 
 before_install:
     - travis_retry composer self-update
