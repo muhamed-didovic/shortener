@@ -3,7 +3,6 @@
 namespace MuhamedDidovic\Shortener\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Cache;
 use MuhamedDidovic\Shortener\Models\Link;
 
 /**
@@ -23,12 +22,12 @@ class SinglePageController extends BaseController
             if ($link) {
                 $link->increment('used_count', 1);
                 $link->touchTimestamp('last_used');
-                return redirect($link->original_url);//301
+
+                return redirect($link->original_url); //301
             }
         }
 
         //return VUE spa app
         return view('shortener::shortener');
-
     }
 }

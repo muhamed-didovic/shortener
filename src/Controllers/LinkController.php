@@ -6,7 +6,6 @@ namespace MuhamedDidovic\Shortener\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Cache;
 use MuhamedDidovic\Shortener\Models\Link;
 use MuhamedDidovic\Shortener\Traits\Response;
 
