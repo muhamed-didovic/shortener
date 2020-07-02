@@ -34,7 +34,6 @@ class LinkController extends BaseController
         }
 
         $link->increment('used_count');
-
         $link->touchTimestamp('last_used');
 
         return $this->linkResponse($link);
@@ -65,7 +64,6 @@ class LinkController extends BaseController
         }
 
         $link->increment('requested_count');
-
         $link->touchTimestamp('last_requested');
 
         return $this->linkResponse($link);

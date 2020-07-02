@@ -11,44 +11,59 @@ class LinkCreationTest extends TestCase
     /** @test */
     public function fails_if_no_url_given()
     {
-        $response = $this->json('POST', config('shortener.routes.post_short_route'))
+        $response = $this
+            ->json('POST', config('shortener.routes.post_short_route'))
             ->assertJsonFragment(['url' => ['Please enter a URL to shorten.']])
             ->assertStatus(422);
 
-        $this->assertDatabaseMissing(config('shortener.table'), [
-            'code' => '1',
-        ]);
+        $this->assertDatabaseMissing(
+            config('shortener.table'),
+            [
+                'code' => '1',
+            ]
+        );
     }
 
     /** @test */
     public function fails_if_url_is_invalid()
     {
-        $response = $this->json('POST', config('shortener.routes.post_short_route'), [
-            'url' => 'http://google^&$$^&*^',
-        ])
+        $response = $this
+            ->json(
+                'POST',
+                config('shortener.routes.post_short_route'),
+                [
+                    'url' => 'http://google^&$$^&*^',
+                ]
+            )
             ->assertJsonFragment(['url' => ['Hmm, that doesn\'t look like a valid URL.']])
             ->assertStatus(422);
 
-        $this->assertDatabaseMissing(config('shortener.table'), [
-            'code' => '1',
-        ]);
+        $this->assertDatabaseMissing(
+            config('shortener.table'),
+            [
+                'code' => '1',
+            ]
+        );
     }
 
     /** @test */
     public function link_without_scheme_can_be_shortened()
     {
-        $this->json(
-            'POST',
-            config('shortener.routes.post_short_route'),
-            [
-                'url' => 'www.google.com',
-            ]
-        )
-            ->assertJsonFragment([
-                'original_url'  => 'http://www.google.com',
-                'shortened_url' => config('shortener.url').'/1',
-                'code'          => '1',
-            ])
+        $this
+            ->json(
+                'POST',
+                config('shortener.routes.post_short_route'),
+                [
+                    'url' => 'www.google.com',
+                ]
+            )
+            ->assertJsonFragment(
+                [
+                    'original_url'  => 'http://www.google.com',
+                    'shortened_url' => config('shortener.url') . '/1',
+                    'code'          => '1',
+                ]
+            )
             ->assertStatus(200);
 
         //"id" => "1"
@@ -61,34 +76,43 @@ class LinkCreationTest extends TestCase
         //"last_requested" => "2019-09-25 18:13:55"
         //"last_used" => null
         $this
-            ->assertDatabaseHas(config('shortener.table'), [
-                'original_url' => 'http://www.google.com',
-                'code'         => '1',
-            ]);
+            ->assertDatabaseHas(
+                config('shortener.table'),
+                [
+                    'original_url' => 'http://www.google.com',
+                    'code'         => '1',
+                ]
+            );
     }
 
     /** @test */
     public function link_with_scheme_can_be_shortened()
     {
-        $this->json(
-            'POST',
-            config('shortener.routes.post_short_route'),
-            [
-                'url' => 'http://www.google.com',
-            ]
-        )
-            ->assertJsonFragment([
-                'original_url'  => 'http://www.google.com',
-                'shortened_url' => config('shortener.url').'/1',
-                'code'          => '1',
-            ])
+        $this
+            ->json(
+                'POST',
+                config('shortener.routes.post_short_route'),
+                [
+                    'url' => 'http://www.google.com',
+                ]
+            )
+            ->assertJsonFragment(
+                [
+                    'original_url'  => 'http://www.google.com',
+                    'shortened_url' => config('shortener.url') . '/1',
+                    'code'          => '1',
+                ]
+            )
             ->assertStatus(200);
 
         $this
-            ->assertDatabaseHas(config('shortener.table'), [
-                'original_url' => 'http://www.google.com',
-                'code'         => '1',
-            ]);
+            ->assertDatabaseHas(
+                config('shortener.table'),
+                [
+                    'original_url' => 'http://www.google.com',
+                    'code'         => '1',
+                ]
+            );
     }
 
     /** @test */
@@ -112,10 +136,13 @@ class LinkCreationTest extends TestCase
         $this->json('POST', config('shortener.routes.post_short_route'), ['url' => $url]);
         $this->json('POST', config('shortener.routes.post_short_route'), ['url' => $url]);
 
-        $this->assertDatabaseHas(config('shortener.table'), [
-            'original_url'    => $url,
-            'requested_count' => 2,
-        ]);
+        $this->assertDatabaseHas(
+            config('shortener.table'),
+            [
+                'original_url'    => $url,
+                'requested_count' => 2,
+            ]
+        );
     }
 
     /** @test */
@@ -123,9 +150,11 @@ class LinkCreationTest extends TestCase
     {
         Link::flushEventListeners();
 
-        $link = factory(Link::class)->create([
-            'last_requested' => Carbon::now()->subDays(2)->toDateTimeString(),
-        ]);
+        $link = factory(Link::class)->create(
+            [
+                'last_requested' => Carbon::now()->subDays(2)->toDateTimeString(),
+            ]
+        );
 
         $reponse = $this
             ->json('POST', config('shortener.routes.post_short_route'), ['url' => $link->original_url]);
@@ -133,16 +162,20 @@ class LinkCreationTest extends TestCase
         $reponse->assertJsonFragment(
             [
                 'original_url' => $link->original_url,
-            ])
+            ]
+        )
             ->assertStatus(200);
 
         $json = json_decode($reponse->getContent());
 
         $lastRequested = is_object($json->data->last_requested) ? $json->data->last_requested->date : $json->data->last_requested;
-        $this->assertDatabaseHas(config('shortener.table'), [
-            'original_url'   => $link->original_url,
-            'last_requested' => Carbon::parse($lastRequested)->toDateTimeString(),
-        ]);
+        $this->assertDatabaseHas(
+            config('shortener.table'),
+            [
+                'original_url'   => $link->original_url,
+                'last_requested' => Carbon::parse($lastRequested)->toDateTimeString(),
+            ]
+        );
         $this->assertNotEquals(Carbon::parse($lastRequested)->toDateTimeString(), $link->last_requested);
         $this->assertTrue(Carbon::parse($lastRequested)->ne($link->last_requested));
     }
