@@ -17,20 +17,18 @@ class SinglePageController extends BaseController
     public function show()
     {
         //when code is found in DB
-        if ($code = request()->segment(1)) {
-            $link = Cache::rememberForever("link.{$code}", function () use ($code) {
-                return Link::byCode($code)->first();
-            });
+        if ($code = request()->segment(1) && count(request()->segments()) == 1) {
+            $link = Link::byCode($code)->first();
 
             if ($link) {
-                $link->increment('used_count');
+                $link->increment('used_count', 1);
                 $link->touchTimestamp('last_used');
-
-                return \Illuminate\Support\Facades\Redirect::to($link->original_url, 301);
+                return redirect($link->original_url);//301
             }
         }
 
         //return VUE spa app
         return view('shortener::shortener');
+
     }
 }

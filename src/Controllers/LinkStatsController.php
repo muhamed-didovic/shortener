@@ -25,9 +25,7 @@ class LinkStatsController extends BaseController
     {
         $code = $request->get('code');
 
-        $link = Cache::remember("stats.{$code}", 10, function () use ($code) {
-            return Link::byCode($code)->first();
-        });
+        $link = Link::byCode($code)->first();
 
         if ($link === null) {
             return response(null, 404);
