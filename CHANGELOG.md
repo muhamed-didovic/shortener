@@ -4,6 +4,10 @@ All notable changes to `shortener` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.1.4] - 2012-02-02
+### Added
+- Resolved issues with caching
+
 ## [1.1.3] - 2012-02-02
 ### Added
 - Final polishing 
