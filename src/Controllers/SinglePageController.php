@@ -30,7 +30,6 @@ class SinglePageController extends BaseController
             }
         }
 
-
         //return VUE spa app
         return view('shortener::shortener');
     }
