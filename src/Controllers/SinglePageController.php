@@ -16,7 +16,7 @@ class SinglePageController extends BaseController
     public function show()
     {
         //when code is found in DB
-        if (count(request()->segments()) == 1 && ($code = request()->segment(1)) ) {
+        if (count(request()->segments()) == 1 && ($code = request()->segment(1))) {
             $link = Link::byCode($code)->first();
             if ($link) {
                 $link->increment('used_count', 1);
