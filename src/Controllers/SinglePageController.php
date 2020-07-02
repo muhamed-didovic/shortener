@@ -29,7 +29,7 @@ class SinglePageController extends BaseController
                 return \Illuminate\Support\Facades\Redirect::to($link->original_url, 301);
             }
 
-            return \Illuminate\Support\Facades\Redirect::to('/nope');
+//            return \Illuminate\Support\Facades\Redirect::to('/nope');
         }
 
         //when code is provided but not found
